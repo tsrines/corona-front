@@ -9,17 +9,7 @@ class App extends React.Component {
     hopkins: []
   }
 
-
- 
-
-
- 
-
-
-
   render() {
-
-
     return (
       <div className="App">
         <h1>Daily Corona Check-In</h1>
