@@ -1,9 +1,11 @@
 import React from 'react'
+import StateCell from '../components/StateCell'
+import {Table, Button} from 'semantic-ui-react'
 
 
 class StatesContainer extends React.Component {
 
-  state =  {states: []}
+  state =  {states: [], search: ""}
 
   getStates = () => {
     fetch(`https://corona.lmao.ninja/states`)
@@ -14,11 +16,39 @@ class StatesContainer extends React.Component {
     this.getStates()
   }
 
+  displayStates = () => {
+    let states = this.state.states.filter(state => state.state.toLowerCase().includes(this.state.search.toLowerCase()))
+
+    let displayStates = states.map((state, index) => {
+
+      return <StateCell key={index} {...state} />
+    })
+
+
+    return displayStates
+  }
+
 
   render (){
-    console.log("this.state.states from statescontainer", this.state.states)
     return (
-      <h1>States Container</h1>
+      <Table singleLine>
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>State</Table.HeaderCell>
+          <Table.HeaderCell>Cases {<Button size='mini' icon='arrow alternate circle down' />}</Table.HeaderCell>
+          <Table.HeaderCell>Cases Today{<Button
+            // onClick={() => this.addFavorite(this.vehicle)}
+            color={'twitter'}
+            icon='heart outline'
+          />}</Table.HeaderCell>
+          <Table.HeaderCell>Active Cases</Table.HeaderCell>
+          <Table.HeaderCell>Deaths</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        {this.displayStates()}
+      </Table.Body>
+    </Table>
     )
   }
 }
