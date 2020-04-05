@@ -3,20 +3,23 @@ import { Fragment } from 'react'
 import CountriesContainer from './CountriesContainer'
 import JohnsHopkinsContainer from './JohnsHopkinsContainer'
 import StatesContainer from './StatesContainer'
-import {Form, Radio} from 'semantic-ui-react'
+import {Form, Radio, Button} from 'semantic-ui-react'
+import MapContainer from './MapContainer'
+
 
 class Main extends React.Component {
 
   state = {}
   handleChange = (e, { value }) => this.setState({ value })
+  toMap = () => this.setState({value: null})
   render() {
-    console.log("this.state from main", this.state)
+
     return (
       <Fragment>
         <Form>
-        <Form.Field>
+        {/* <Form.Field>
           Selected value: <b>{this.state.value}</b>
-        </Form.Field>
+        </Form.Field> */}
         <Form.Field>
           <Radio
             label='Countries'
@@ -35,16 +38,18 @@ class Main extends React.Component {
             onChange={this.handleChange}
           />
         </Form.Field>
-        {/* <Form.Field>
+        <Form.Field>
           <Radio
-            label='Cases'
+            label='Johns Hopkins Data'
             name='radioGroup'
             value='cases'
             checked={this.state.value === 'cases'}
-            onChange={this.handleChange}
+            onChange={this.handleChange}  
           />
-        </Form.Field> */}
+        </Form.Field>
       </Form>
+        {this.state.value && <Button  onClick={this.toMap}>Back to Map</Button>}
+        {!this.state.value && <MapContainer /> }
         {this.state.value === 'countries' && <CountriesContainer />}
         {this.state.value === 'states' && <StatesContainer />}
         {this.state.value === 'cases' && <JohnsHopkinsContainer />}
