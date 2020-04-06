@@ -18,7 +18,7 @@ class StatesContainer extends React.Component {
 
   displayStates = () => {
     let states = this.state.states.filter(state => state.state.toLowerCase().includes(this.state.search.toLowerCase()))
-
+    states.sort((a,b) => b.cases - a.cases)
     let displayStates = states.map((state, index) => {
 
       return <StateCell key={index} {...state} />

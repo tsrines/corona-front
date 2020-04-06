@@ -3,8 +3,8 @@ import { Fragment } from 'react'
 import CountriesContainer from './CountriesContainer'
 import JohnsHopkinsContainer from './JohnsHopkinsContainer'
 import StatesContainer from './StatesContainer'
-import {Form, Radio, Button} from 'semantic-ui-react'
-import MapContainer from './MapContainer'
+import {Form, Radio} from 'semantic-ui-react'
+// import MapContainer from './MapContainer'
 
 
 class Main extends React.Component {
@@ -48,8 +48,8 @@ class Main extends React.Component {
           />
         </Form.Field>
       </Form>
-        {this.state.value && <Button  onClick={this.toMap}>Back to Map</Button>}
-        {!this.state.value && <MapContainer /> }
+        {/* {this.state.value && <Button  onClick={this.toMap}>Back to Map</Button>} */}
+        {/* {!this.state.value && <MapContainer /> } */}
         {this.state.value === 'countries' && <CountriesContainer />}
         {this.state.value === 'states' && <StatesContainer />}
         {this.state.value === 'cases' && <JohnsHopkinsContainer />}

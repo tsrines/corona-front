@@ -12,11 +12,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>Daily Corona Check-In</h1>
+        <h1>Corona Daily Check-In</h1>
         <Main />
       </div>
     );
   }
 }
-
 export default App;

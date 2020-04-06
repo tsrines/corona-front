@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Table, Image } from 'semantic-ui-react'
+import { Table } from 'semantic-ui-react'
 
 function lastUpdate(utc){
   let jsTime = new Date(utc)
