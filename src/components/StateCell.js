@@ -17,6 +17,8 @@ function StateCell(props) {
       <Table.Cell>{props.todayCases}</Table.Cell>
       <Table.Cell>{props.active}</Table.Cell>
       <Table.Cell>{props.deaths}</Table.Cell>
+      <Table.Cell>{props.tests}</Table.Cell>
+      <Table.Cell>{props.testsPerOneMillion}</Table.Cell>
     </Table.Row>
   )
 }

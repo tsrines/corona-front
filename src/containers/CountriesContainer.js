@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Form, Input, Button } from 'semantic-ui-react'
+import { Table, Form, Input } from 'semantic-ui-react'
 import CountryCell from '../components/CountryCell'
 import _ from 'lodash'
 
@@ -26,12 +26,7 @@ class CountriesContainer extends React.Component {
 
   displayCountries = () => {
     let countries = this.state.countries.filter(country => country.country.toLowerCase().includes(this.state.search.toLowerCase()))
-    // countries.sort((a, b) => b.cases - a.cases)
-    
-    let displayCountries = countries.map((country, index) => {
-
-      return <CountryCell key={index} {...country} />
-    })
+    let displayCountries = countries.map((country, index) => <CountryCell key={index} {...country} />)
 
 
     return displayCountries
@@ -64,15 +59,14 @@ class CountriesContainer extends React.Component {
 
 
   render() {
-    console.log(this.state)
-    const { column, direction } = this.state
+    const { column, direction, search } = this.state
     return (
       <div>
         {/* <MapContainer /> */}
         <Form>
-          <Input placeholder='Search...' type='text' name="search" value={this.state.search} onChange={(e) => this.handleSearch(e)}></Input>
+          <Input placeholder='Search...' type='text' name="search" value={search} onChange={(e) => this.handleSearch(e)}></Input>
         </Form>
-        <Table sortable celled fixed singleLine>
+        <Table sortable celled singleLine>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell></Table.HeaderCell>
@@ -83,25 +77,29 @@ class CountriesContainer extends React.Component {
                 Last Updated
                 </Table.HeaderCell>
               <Table.HeaderCell
-               sorted={column === 'country' ? direction : null}
-               onClick={this.handleSort('country')}
+                sorted={column === 'country' ? direction : null}
+                onClick={this.handleSort('country')}
               >
-                Country</Table.HeaderCell>
-
-              <Table.HeaderCell 
+                Country
+                </Table.HeaderCell>
+              <Table.HeaderCell
                 sorted={column === 'cases' ? direction : null}
                 onClick={this.handleSort('cases')}
-              >Cases</Table.HeaderCell>
+              >
+                Cases
+                </Table.HeaderCell>
               <Table.HeaderCell
                 sorted={column === 'todayCases' ? direction : null}
                 onClick={this.handleSort('todayCases')}
               >
-                Cases Today</Table.HeaderCell>
+                Cases Today
+                </Table.HeaderCell>
               <Table.HeaderCell
                 sorted={column === 'casesPerOneMillion' ? direction : null}
                 onClick={this.handleSort('casesPerOneMillion')}
               >
-              Cases Per 1 Million</Table.HeaderCell>
+                Cases Per 1 Million
+                </Table.HeaderCell>
               <Table.HeaderCell
                 sorted={column === 'deaths' ? direction : null}
                 onClick={this.handleSort('deaths')}
@@ -111,12 +109,14 @@ class CountriesContainer extends React.Component {
                 sorted={column === 'todayDeaths' ? direction : null}
                 onClick={this.handleSort('todayDeaths')}
               >
-                Deaths Today</Table.HeaderCell>
+                Deaths Today
+                </Table.HeaderCell>
               <Table.HeaderCell
                 sorted={column === 'deathsPerOneMillion' ? direction : null}
                 onClick={this.handleSort('deathsPerOneMillion')}
               >
-                Deaths Per 1 Million</Table.HeaderCell>
+                Deaths Per 1 Million
+                </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
