@@ -2,11 +2,11 @@ import React from 'react'
 
 import { Table} from 'semantic-ui-react'
 
-function lastUpdate(utc){
-  let jsTime = new Date(utc)
+// function lastUpdate(utc){
+//   let jsTime = new Date(utc)
 
-  return jsTime.toLocaleString() 
-}
+//   return jsTime.toLocaleString() 
+// }
 
 function StateCell(props) {
 

@@ -14,7 +14,7 @@ class StatesContainer extends React.Component {
   }
 
   getStates = () => {
-    fetch(`https://corona.lmao.ninja/states`)
+    fetch(`https://corona.lmao.ninja/v2/states`)
       .then(resp => resp.json())
       .then(states => this.setState({ states }))
   }

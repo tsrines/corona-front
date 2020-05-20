@@ -16,7 +16,7 @@ class CountriesContainer extends React.Component {
   }
 
   getCountries = () => {
-    fetch(`https://corona.lmao.ninja/countries`)
+    fetch(`https://corona.lmao.ninja/v2/countries`)
       .then(resp => resp.json())
       .then(countries => this.setState({ countries }))
   }
