@@ -10,7 +10,9 @@ function lastUpdate(utc){
 
 function JohnsHopkinsCell(props) {
 
+
   return (
+
     <Table.Row>
       <Table.Cell>{lastUpdate(props.updatedAt)}</Table.Cell>
       <Table.Cell>{props.country}</Table.Cell>

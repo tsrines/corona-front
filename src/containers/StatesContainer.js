@@ -2,6 +2,7 @@ import React from 'react'
 import StateCell from '../components/StateCell'
 import { Table, Form, Input } from 'semantic-ui-react'
 import _ from 'lodash'
+import {STATES} from '../resources/endpoints'
 
 
 class StatesContainer extends React.Component {
@@ -14,7 +15,7 @@ class StatesContainer extends React.Component {
   }
 
   getStates = () => {
-    fetch(`https://corona.lmao.ninja/v2/states`)
+    fetch(STATES)
       .then(resp => resp.json())
       .then(states => this.setState({ states }))
   }

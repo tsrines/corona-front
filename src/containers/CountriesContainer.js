@@ -2,6 +2,7 @@ import React from 'react'
 import { Table, Form, Input } from 'semantic-ui-react'
 import CountryCell from '../components/CountryCell'
 import _ from 'lodash'
+import {COUNTRIES} from '../resources/endpoints'
 
 
 
@@ -16,9 +17,10 @@ class CountriesContainer extends React.Component {
   }
 
   getCountries = () => {
-    fetch(`https://corona.lmao.ninja/v2/countries`)
+    fetch(COUNTRIES)
       .then(resp => resp.json())
       .then(countries => this.setState({ countries }))
+      .catch(err => console.dir(err))
   }
   componentDidMount() {
     this.getCountries()
@@ -61,8 +63,8 @@ class CountriesContainer extends React.Component {
   render() {
     const { column, direction, search } = this.state
     return (
-      <div>
-        {/* <MapContainer /> */}
+      <>
+        {JSON.stringify(this.state.countries[0], null, 2)}
         <Form>
           <Input placeholder='Search...' type='text' name="search" value={search} onChange={(e) => this.handleSearch(e)}></Input>
         </Form>
@@ -124,7 +126,7 @@ class CountriesContainer extends React.Component {
           </Table.Body>
         </Table>
 
-      </div>
+      </>
     )
   }
 }
