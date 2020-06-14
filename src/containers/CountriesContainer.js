@@ -64,11 +64,11 @@ class CountriesContainer extends React.Component {
     const { column, direction, search } = this.state
     return (
       <>
-        {JSON.stringify(this.state.countries[0], null, 2)}
-        <Form>
+        {/* {JSON.stringify(this.state.countries[0], null, 2)} */}
+        <Form className="App">
           <Input placeholder='Search...' type='text' name="search" value={search} onChange={(e) => this.handleSearch(e)}></Input>
         </Form>
-        <Table sortable celled singleLine>
+        <Table sortable striped selectable unstackable celled >
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell></Table.HeaderCell>
